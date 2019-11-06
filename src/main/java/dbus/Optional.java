@@ -10,6 +10,10 @@ import java.util.stream.Stream;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * see java doc : https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html
+ * @param <T>
+ */
 @SuppressWarnings({"WeakerAccess", "unused"})
 public abstract class Optional<T> {
 
