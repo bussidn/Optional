@@ -160,7 +160,7 @@ public abstract class Optional<T> {
 
         private T value;
 
-        public Some(T value) {
+        private Some(T value) {
             this.value = requireNonNull(value);
         }
 
