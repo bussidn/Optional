@@ -249,7 +249,6 @@ public abstract class Optional<T> {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            if (!super.equals(o)) return false;
             Some<?> some = (Some<?>) o;
             return value.equals(some.value);
         }
