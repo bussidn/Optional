@@ -89,7 +89,7 @@ public abstract class Optional<T> {
 
         @Override
         public boolean isEmpty() {
-            return false;
+            return true;
         }
 
         @Override
@@ -110,6 +110,7 @@ public abstract class Optional<T> {
 
         @Override
         public <U> Optional<U> map(Function<? super T, ? extends U> mapper) {
+            requireNonNull(mapper);
             return getInstance();
         }
 
@@ -122,7 +123,7 @@ public abstract class Optional<T> {
         @Override
         public Optional<T> or(Supplier<? extends Optional<? extends T>> supplier) {
             requireNonNull(supplier);
-            return this;
+            return narrow(supplier.get());
         }
 
         @Override
@@ -171,7 +172,7 @@ public abstract class Optional<T> {
 
         @Override
         public boolean isPresent() {
-            return false;
+            return true;
         }
 
         @Override
@@ -205,13 +206,13 @@ public abstract class Optional<T> {
         @Override
         public <U> Optional<U> flatMap(Function<? super T, ? extends Optional<? extends U>> mapper) {
             requireNonNull(mapper);
-            return Optional.narrow(mapper.apply(this.value));
+            return requireNonNull(Optional.narrow(mapper.apply(this.value)));
         }
 
         @Override
         public Optional<T> or(Supplier<? extends Optional<? extends T>> supplier) {
             requireNonNull(supplier);
-            return requireNonNull(narrow(supplier.get()));
+            return this;
         }
 
         @Override
@@ -255,7 +256,7 @@ public abstract class Optional<T> {
 
         @Override
         public int hashCode() {
-            return Objects.hash(super.hashCode(), value);
+            return Objects.hash(value);
         }
     }
 }
