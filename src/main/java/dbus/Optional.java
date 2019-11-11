@@ -255,7 +255,7 @@ public abstract class Optional<T> {
 
         @Override
         public int hashCode() {
-            return Objects.hash(super.hashCode(), value);
+            return Objects.hash(value);
         }
     }
 }
